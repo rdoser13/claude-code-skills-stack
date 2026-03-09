@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skills Stack — Ryan Doser</title>
+    <meta name="description" content="20+ Claude Code skills I use daily for marketing, content, and business. Setup video, best tips, and lifetime updates included.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --white: #ffffff;
+            --accent: #0693e3;
+            --accent-glow: rgba(6, 147, 227, 0.3);
+            --green: #00d084;
+            --gray-400: #9e9eaf;
+            --gray-600: #6b6b80;
+            --border: rgba(255,255,255,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--white);
+            background: var(--darker);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0.75rem 2rem;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 26, 0.85);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        nav .nav-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        nav .nav-cta:hover {
+            background: #0580c9;
+            transform: translateY(-1px);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 680px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+            animation: fadeUp 0.6s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            max-width: 520px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            animation: fadeUp 0.6s ease-out 0.1s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-price {
+            animation: fadeUp 0.6s ease-out 0.2s both;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-price .amount {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .hero-price .term {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-left: 0.2rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 25px var(--accent-glow);
+            animation: fadeUp 0.6s ease-out 0.3s both;
+        }
+
+        .btn-primary:hover {
+            background: #0580c9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px var(--accent-glow);
+        }
+
+        .hero-meta {
+            margin-top: 1.25rem;
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            animation: fadeUp 0.6s ease-out 0.4s both;
+        }
+
+        /* ── TERMINAL MOCKUP ── */
+        .terminal {
+            max-width: 520px;
+            margin: 2.5rem auto 0;
+            background: #0d0d14;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: left;
+            animation: fadeUp 0.6s ease-out 0.5s both;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.65rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #febc2e; }
+        .terminal-dot.green { background: #28c840; }
+
+        .terminal-bar span {
+            margin-left: auto;
+            font-size: 0.7rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .terminal-body {
+            padding: 1.25rem 1.25rem;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: var(--accent);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .terminal-command {
+            color: var(--white);
+        }
+
+        .terminal-output {
+            color: var(--gray-400);
+            padding-left: 1.1rem;
+            margin-top: 0.15rem;
+        }
+
+        .terminal-output .highlight {
+            color: var(--green);
+        }
+
+        /* ── BEFORE/AFTER ── */
+        .before-after {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .before-after h2 {
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--white);
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .ba-column {
+            padding: 1.75rem;
+            border-radius: 10px;
+        }
+
+        .ba-column.before {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .ba-column.after {
+            background: rgba(6, 147, 227, 0.06);
+            border: 1px solid rgba(6, 147, 227, 0.15);
+        }
+
+        .ba-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .ba-column.before .ba-label { color: var(--gray-600); }
+        .ba-column.after .ba-label { color: var(--accent); }
+
+        .ba-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .ba-item:last-child { margin-bottom: 0; }
+
+        .ba-column.before .ba-item { color: var(--gray-400); }
+        .ba-column.after .ba-item { color: var(--white); }
+
+        .ba-icon {
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .ba-column.before .ba-icon { color: #ef4444; }
+        .ba-column.after .ba-icon { color: var(--green); }
+
+        @media (max-width: 600px) {
+            .ba-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── INCLUDES ── */
+        .includes {
+            padding: 5rem 2rem;
+            background: var(--dark);
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .includes h2 {
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .includes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.15s ease;
+        }
+
+        .skill-item:hover {
+            border-color: rgba(6, 147, 227, 0.3);
+            background: rgba(6, 147, 227, 0.05);
+        }
+
+        .skill-item .check {
+            color: var(--green);
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .skill-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .includes-extras {
+            margin-top: 1.75rem;
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .includes-extras strong {
+            color: var(--white);
+        }
+
+        /* ── BOTTOM CTA ── */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .cta-section .subtitle {
+            color: var(--gray-400);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .refund-note {
+            margin-top: 1.25rem;
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* ── FAQ ── */
+        .faq {
+            padding: 5rem 2rem;
+            background: var(--darker);
+        }
+
+        .faq h2 {
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .faq-list {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 1.15rem 0;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            color: var(--accent);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item .answer {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            padding-top: 0.75rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            background: var(--darker);
+        }
+
+        footer a {
+            color: var(--gray-400);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .includes, .cta-section, .faq { padding: 3.5rem 1.5rem; }
+            .includes-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo"><img src="logo.png" alt="Ryan Doser"></div>
+        <a href="https://buy.stripe.com/bJeeVe82pacn64ieM09oc00" class="nav-cta">Get the Skills Stack</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Claude Code<br>Skills Stack</h1>
+            <p class="subtitle">Get the 20+ Claude Code skills I use daily for marketing, content, and business. Comes with a setup video, my best tips, and lifetime updates.</p>
+            <div class="hero-price">
+                <span class="amount">$99</span>
+                <span class="term">one-time</span>
+            </div>
+            <a href="https://buy.stripe.com/bJeeVe82pacn64ieM09oc00" class="btn-primary">Get Instant Access &rarr;</a>
+            <div class="hero-meta">Secure checkout via Stripe &middot; Instant delivery</div>
+
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span>Claude Code</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">&gt;</span>
+                        <span class="terminal-command">/seo-blog-post</span>
+                    </div>
+                    <div class="terminal-output">Loading SEO Blog Post Writer skill...</div>
+                    <div class="terminal-output">Researching keywords for "claude code marketing"...</div>
+                    <div class="terminal-output">Analyzing top 10 SERP results...</div>
+                    <div class="terminal-output">Writing draft at 8th-grade reading level...</div>
+                    <div class="terminal-output">Scoring: readability 9/10, keyword density 8/10, structure 10/10</div>
+                    <div class="terminal-output"><span class="highlight">&#x2713; 1,400-word SEO blog post ready for review.</span></div>
+
+                    <div class="terminal-line" style="margin-top: 0.8rem;">
+                        <span class="terminal-prompt">&gt;</span>
+                        <span class="terminal-command">/content-repurpose</span>
+                    </div>
+                    <div class="terminal-output">Reading blog post from last output...</div>
+                    <div class="terminal-output">Generating LinkedIn post (hook + value + CTA)...</div>
+                    <div class="terminal-output">Generating X thread (5 tweets)...</div>
+                    <div class="terminal-output">Generating newsletter draft for AI Power Play...</div>
+                    <div class="terminal-output"><span class="highlight">&#x2713; LinkedIn post, X thread, and newsletter draft created.</span></div>
+
+                    <div class="terminal-line" style="margin-top: 0.8rem;">
+                        <span class="terminal-prompt">&gt;</span>
+                        <span class="terminal-command">/anti-slop</span>
+                    </div>
+                    <div class="terminal-output">Scanning all outputs for AI-generated fluff...</div>
+                    <div class="terminal-output">Flagged 3 instances: "delve", "landscape", "game-changer"</div>
+                    <div class="terminal-output">Rewriting flagged sections...</div>
+                    <div class="terminal-output"><span class="highlight">&#x2713; Clean copy ready. Zero slop detected.</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED -->
+    <section class="includes">
+        <div class="container">
+            <h2>What's Included</h2>
+            <div class="includes-grid">
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Anti-Slop</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Email Writer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>LinkedIn Post Writer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Content Repurposing</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>YouTube SEO</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Short Form Video Scripts</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>SEO Audit</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Paid Ads</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Skill Creator</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Thumbnail Designer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>SEO Blog Post Writer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>& more</span></div>
+            </div>
+            <div class="includes-extras">
+                <strong>+ Setup video</strong> &middot; <strong>My best tips for Claude Code</strong> &middot; <strong>Lifetime updates</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <section class="before-after">
+        <div class="container">
+            <h2>Without Skills vs. With Claude Code Skills</h2>
+            <div class="ba-grid">
+                <div class="ba-column before">
+                    <div class="ba-label">Without Skills</div>
+                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Re-explain your brand voice every session</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>20+ minutes setting up context before real work</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Generic output that sounds like everyone else</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Copy-paste prompts that break after one use</span></div>
+                </div>
+                <div class="ba-column after">
+                    <div class="ba-label">With the Skills Stack</div>
+                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Claude knows your voice, audience, and standards</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Type one slash command and get a production draft</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Consistent output with built-in scoring and guardrails</span></div>
+                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Reusable frameworks that improve over time</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to ship faster?</h2>
+            <p class="subtitle">Drop these skills into Claude Code and start getting better output today.</p>
+            <a href="https://buy.stripe.com/bJeeVe82pacn64ieM09oc00" class="btn-primary">Get the AI Skills Stack &mdash; $99 &rarr;</a>
+            <p class="refund-note">All digital product sales are final. Products are delivered instantly and cannot be returned.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>FAQs</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Do I need Claude Code to use these?</summary>
+                    <div class="answer">Yes. These skills are built for Claude Code (the CLI tool). You'll need a Claude Max subscription to run them. The skills are the instruction manuals that make Claude Code way more effective.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Are these just prompts?</summary>
+                    <div class="answer">No. Skills are full frameworks with context, examples, scoring criteria, and guardrails. They live in your .claude/ directory and Claude loads them automatically. Think instruction manuals -- not copy-paste text.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Will these work for my industry?</summary>
+                    <div class="answer">The frameworks are industry-agnostic. You customize them with your own brand voice, audience, and examples. That's what makes them powerful.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I get updates?</summary>
+                    <div class="answer">Yes. Lifetime updates are included. As I build and refine new skills, you get access.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What if I'm brand new to Claude Code?</summary>
+                    <div class="answer">The Skills Stack comes with a setup video, onboarding guide, and system skills for MCP setup and troubleshooting. If you can copy files into a folder, you can use these.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What's the refund policy?</summary>
+                    <div class="answer">All digital product sales are final. Products are delivered instantly and cannot be returned due to the downloadable nature of this product.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Ryan Doser LLC</p>
+        <p style="margin-top: 0.4rem;">
+            <a href="https://ryandoser.com">ryandoser.com</a> &middot;
+            <a href="https://youtube.com/@ryandoser">YouTube</a> &middot;
+            <a href="https://linkedin.com/in/ryandoser">LinkedIn</a>
+        </p>
+    </footer>
+
+</body>
+</html>
