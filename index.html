@@ -525,11 +525,135 @@
 
         footer a:hover { color: var(--accent); }
 
+        /* ── WHO IT'S FOR ── */
+        .who-for {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .who-for h2 {
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .who-item .who-icon {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            margin-top: 0.1rem;
+            color: var(--accent);
+        }
+
+        .who-item .who-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.4;
+        }
+
+        .who-item .who-desc {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            margin-top: 0.25rem;
+            line-height: 1.5;
+        }
+
+        /* ── SOCIAL PROOF ── */
+        .social-proof {
+            padding: 5rem 2rem;
+            background: var(--darker);
+        }
+
+        .social-proof h2 {
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .hero { padding: 7rem 1.5rem 3rem; }
-            .includes, .cta-section, .faq { padding: 3.5rem 1.5rem; }
+            .includes, .cta-section, .faq, .who-for, .social-proof { padding: 3.5rem 1.5rem; }
             .includes-grid { grid-template-columns: 1fr; }
+            .who-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 760px; }
         }
     </style>
 </head>
@@ -600,43 +724,128 @@
         <div class="container">
             <h2>What's Included</h2>
             <div class="includes-grid">
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Anti-Slop</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Email Writer</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>LinkedIn Post Writer</span></div>
                 <div class="skill-item"><span class="check">&#x2713;</span> <span>Content Repurposing</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>YouTube SEO</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Short Form Video Scripts</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>SEO Audit</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Paid Ads</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Skill Creator</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>Thumbnail Designer</span></div>
                 <div class="skill-item"><span class="check">&#x2713;</span> <span>SEO Blog Post Writer</span></div>
-                <div class="skill-item"><span class="check">&#x2713;</span> <span>& more</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Email Newsletter Writer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>LinkedIn Post Writer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Anti-Slop</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>YouTube SEO Packaging</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Short Form Video Scripts</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Keyword Research</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Paid Ads</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Local SEO</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Web Designer</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Skill Creator</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>Auto Improve</span></div>
+                <div class="skill-item"><span class="check">&#x2713;</span> <span>+ 13 more skills</span></div>
             </div>
             <div class="includes-extras">
-                <strong>+ Setup video</strong> &middot; <strong>My best tips for Claude Code</strong> &middot; <strong>Lifetime updates</strong>
+                <strong>+ My CLAUDE.md file</strong> &middot; <strong>Setup video</strong> &middot; <strong>Best tips for Claude Code</strong> &middot; <strong>Lifetime updates</strong>
             </div>
         </div>
     </section>
 
-    <!-- BEFORE / AFTER -->
-    <section class="before-after">
+    <!-- WHO THIS IS FOR -->
+    <section class="who-for">
         <div class="container">
-            <h2>Without Skills vs. With Claude Code Skills</h2>
-            <div class="ba-grid">
-                <div class="ba-column before">
-                    <div class="ba-label">Without Skills</div>
-                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Re-explain your brand voice every session</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>20+ minutes setting up context before real work</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Generic output that sounds like everyone else</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2717;</span> <span>Copy-paste prompts that break after one use</span></div>
+            <h2>Built For Marketers &amp; Creators Who Use Claude Code</h2>
+            <div class="who-grid">
+                <div class="who-item">
+                    <span class="who-icon">&#x2192;</span>
+                    <div>
+                        <div class="who-label">Solo marketers and freelancers</div>
+                        <div class="who-desc">You're doing content, SEO, email, and social yourself. These skills cut your production time in half.</div>
+                    </div>
                 </div>
-                <div class="ba-column after">
-                    <div class="ba-label">With the Skills Stack</div>
-                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Claude knows your voice, audience, and standards</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Type one slash command and get a production draft</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Consistent output with built-in scoring and guardrails</span></div>
-                    <div class="ba-item"><span class="ba-icon">&#x2713;</span> <span>Reusable frameworks that improve over time</span></div>
+                <div class="who-item">
+                    <span class="who-icon">&#x2192;</span>
+                    <div>
+                        <div class="who-label">Agency owners and consultants</div>
+                        <div class="who-desc">You need consistent, client-ready output fast. Skills give Claude your standards so the first draft is the final draft.</div>
+                    </div>
+                </div>
+                <div class="who-item">
+                    <span class="who-icon">&#x2192;</span>
+                    <div>
+                        <div class="who-label">Content creators and YouTubers</div>
+                        <div class="who-desc">You repurpose videos into blog posts, newsletters, and social. These skills automate the entire pipeline.</div>
+                    </div>
+                </div>
+                <div class="who-item">
+                    <span class="who-icon">&#x2192;</span>
+                    <div>
+                        <div class="who-label">Non-technical people who want real results from AI</div>
+                        <div class="who-desc">You don't need to write code. Drop the skills in, run slash commands, and get production-quality output.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>What Buyers Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">"Ryan's Skills Stack helped me set up Claude Code as a non-technical marketer in just a few hours. Highly recommend if you're overwhelmed and not sure where to start. The skills guide you through the process step by step."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Matthias Linder.jpg" alt="Matthias Linder"></div>
+                        <div>
+                            <div class="testimonial-name">Matthias Linder</div>
+                            <div class="testimonial-role">Email Marketing Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"That's the best bargain I've ever seen. I've learned so much from Ryan's content. The Skills Stack is worth way more than $99. Already planning to book consulting time to go deeper."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Shelly Frank.jpeg" alt="Shelly Frank"></div>
+                        <div>
+                            <div class="testimonial-name">Shelly Frank</div>
+                            <div class="testimonial-role">Marketing Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"I can feel the energy behind Ryan's work, and while YES he's leveraging AI, I can sense his genuine interest in helping people. The Skills Stack is that same energy packaged into something you can actually use."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Catherine Eadie.jpeg" alt="Catherine Eadie"></div>
+                        <div>
+                            <div class="testimonial-name">Catherine Eadie</div>
+                            <div class="testimonial-role">Entrepreneur &amp; AI Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"The SEO Blog Post Writer skill changed my workflow completely. I run one command and get a fully optimized post with the right keywords, structure, and readability. My content is ranking faster than anything I wrote manually."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Nesil Ozer.jpeg" alt="Nesil Ozer"></div>
+                        <div>
+                            <div class="testimonial-name">Nesil Ozer</div>
+                            <div class="testimonial-role">SEO Specialist</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"If you run a business, you need to learn AI. It's not optional. Ryan's Skills Stack is the fastest way I've found to go from watching tutorials to actually getting results. He's smart, knowledgeable, and genuinely wants to help business owners grow. Your competition isn't waiting. Neither should you."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Rotem Brayer.jpeg" alt="Rotem Brayer"></div>
+                        <div>
+                            <div class="testimonial-name">Rotem Brayer, MEd</div>
+                            <div class="testimonial-role">Licensed Professional Counselor</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"I thought I knew what I was doing with AI until I started using Ryan's Skills Stack. The Content Repurposing skill alone changed everything. Now I go from a YouTube video to a blog post to social media and it comes out in my words, my language, with zero AI fluff. Completely changed how I think about content."</div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><img src="headshots/Brad Smith.jpeg" alt="Brad Smith"></div>
+                        <div>
+                            <div class="testimonial-name">Brad Smith</div>
+                            <div class="testimonial-role">YouTuber &amp; Owner of AutomationLinks</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -668,6 +877,10 @@
                 <details class="faq-item">
                     <summary>Will these work for my industry?</summary>
                     <div class="answer">The frameworks are industry-agnostic. You customize them with your own brand voice, audience, and examples. That's what makes them powerful.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do these only work with Claude Code?</summary>
+                    <div class="answer">They're built for Claude Code, but the skill files are plain markdown. You can transfer them to Codex, Gemini CLI, or any AI coding agent that reads markdown instructions.</div>
                 </details>
                 <details class="faq-item">
                     <summary>Do I get updates?</summary>
